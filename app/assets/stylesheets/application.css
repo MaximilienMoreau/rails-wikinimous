@@ -1,10 +1,241 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* === Space / Nebula UI — Wikinimous === */
+
+:root{
+  --bg0:#03040a;
+  --bg1:#070b1a;
+
+  --panel: rgba(255,255,255,.06);
+  --stroke: rgba(255,255,255,.14);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+
+  --cyan:#28e7ff;
+  --violet:#8b5cff;
+  --blue:#3a7dff;
+  --lime:#40ff8a;
+  --pink:#ff4fd8;
+
+  --shadow: rgba(0,0,0,.65);
+}
+
+html, body{ height:100%; }
+
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(900px 700px at 12% 18%, rgba(40,231,255,.18), transparent 60%),
+    radial-gradient(800px 600px at 85% 20%, rgba(139,92,255,.18), transparent 60%),
+    radial-gradient(700px 600px at 55% 88%, rgba(58,125,255,.12), transparent 62%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  letter-spacing:.2px;
+  overflow-x:hidden;
+}
+
+/* Starfield */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background:
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.60), transparent 40%),
+    radial-gradient(1px 1px at 140px 80px, rgba(255,255,255,.35), transparent 40%),
+    radial-gradient(1px 1px at 90px 160px, rgba(255,255,255,.35), transparent 40%),
+    radial-gradient(1px 1px at 220px 140px, rgba(255,255,255,.45), transparent 40%),
+    radial-gradient(1px 1px at 320px 40px, rgba(255,255,255,.25), transparent 40%),
+    radial-gradient(1px 1px at 380px 180px, rgba(255,255,255,.28), transparent 40%);
+  background-size: 420px 220px;
+  mix-blend-mode: overlay;
+}
+
+/* Subtle scanlines */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.06;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.35) 0px,
+    rgba(255,255,255,.35) 1px,
+    transparent 3px,
+    transparent 7px
+  );
+  mix-blend-mode: overlay;
+}
+
+.container{ max-width: 980px; }
+
+/* Headings */
+h1, h2, h3{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+  text-shadow:
+    0 0 22px rgba(40,231,255,.18),
+    0 0 28px rgba(139,92,255,.14);
+}
+
+/* “Docking bay header” block */
+.space-header{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+  box-shadow: 0 30px 80px var(--shadow), inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.space-header::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(700px 260px at 20% 0%, rgba(40,231,255,.22), transparent 58%),
+    radial-gradient(650px 260px at 95% 30%, rgba(139,92,255,.20), transparent 62%),
+    radial-gradient(520px 260px at 55% 110%, rgba(58,125,255,.14), transparent 60%);
+  opacity:.9;
+  pointer-events:none;
+}
+
+.space-header > *{ position:relative; }
+
+.space-top{
+  padding: 18px 18px 14px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 16px;
+}
+
+.space-sub{
+  color: var(--muted);
+  letter-spacing: .4px;
+}
+
+.space-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.80);
+  font-weight: 700;
+}
+
+.space-chip i{ color: rgba(40,231,255,.85); }
+
+.space-line{
+  height: 2px;
+  background: linear-gradient(90deg, rgba(40,231,255,.85), rgba(139,92,255,.45), transparent);
+  opacity: .9;
+}
+
+/* Cards */
+.card{
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05)) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow: 0 30px 80px var(--shadow), inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+
+/* List group */
+.list-group{
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+
+.list-group-item{
+  background: rgba(0,0,0,.22) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  color: var(--text) !important;
+  padding: 16px 16px;
+}
+
+.list-group-item:hover{
+  background: rgba(255,255,255,.06) !important;
+  box-shadow: inset 0 0 0 1px rgba(40,231,255,.14);
+}
+
+.fa-chevron-right{ color: rgba(255,255,255,.50) !important; }
+
+/* Buttons */
+.btn{
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: .6px;
+}
+
+.btn-primary{
+  border: 0 !important;
+  background: linear-gradient(90deg, var(--cyan), var(--lime)) !important;
+  color: #061018 !important;
+  box-shadow:
+    0 18px 60px rgba(40,231,255,.18),
+    0 0 0 1px rgba(40,231,255,.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.45) 35%, transparent 70%);
+  transform: translateX(-120%);
+  animation: sweep 2.2s ease-in-out infinite;
+  opacity:.65;
+  pointer-events:none;
+}
+
+@keyframes sweep{
+  0% { transform: translateX(-140%); }
+  55% { transform: translateX(140%); }
+  100% { transform: translateX(140%); }
+}
+
+.btn-outline-secondary,
+.btn-outline-danger,
+.btn-link{
+  background: rgba(0,0,0,.18) !important;
+  border-color: rgba(255,255,255,.22) !important;
+  color: rgba(255,255,255,.86) !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-danger:hover{
+  border-color: rgba(40,231,255,.45) !important;
+  box-shadow: 0 0 0 4px rgba(40,231,255,.10);
+}
+
+/* Forms */
+.form-label, label{
+  color: rgba(255,255,255,.92) !important;
+  font-weight: 800;
+  letter-spacing:.4px;
+}
+
+.form-control, textarea{
+  border-radius: 14px !important;
+  background: rgba(0,0,0,.35) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: var(--text) !important;
+}
+
+.form-control::placeholder{ color: rgba(255,255,255,.45) !important; }
+
+.form-control:focus, textarea:focus{
+  border-color: rgba(40,231,255,.55) !important;
+  box-shadow: 0 0 0 4px rgba(40,231,255,.12), 0 0 34px rgba(139,92,255,.14) !important;
+}
